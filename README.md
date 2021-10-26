@@ -20,7 +20,7 @@ The following REST calls are supported:
 |PUT|api/currencies/{id}|updates a currecy with id|
 
 Sorting and paging is also support, for example 
-`GET http:/localhost:8080/api/currencies?sort=ticker&page=3&size=10`
+`GET http://localhost:8080/api/currencies?sort=ticker&page=3&size=10`
 The paramater sort accepts:
 * name
 * ticker
@@ -34,4 +34,4 @@ The file logback-spring.xml in src/main/resources can be adjusting to change log
 JUnit tests covers the REST calls.
 
 ## Webgui
-A bare webapplication (Angular V1) is served at http:/localhost:8080 for additional testing purpose.
+A bare webapplication (Angular V1) is served at http://localhost:8080 for additional testing purpose.
