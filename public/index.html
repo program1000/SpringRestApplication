@@ -1,0 +1,75 @@
+<!doctype html>
+<html ng-app="front">
+    <head>
+        <title>Crypto currencies</title>
+        <script src="angular_v143.min.js"></script>
+        <script src="control.js"></script>
+    </head>
+
+    <body>
+        <div ng-controller="getAll">
+            <p>Currencies</p>
+            <table border = "1">
+               <tr>
+                  <td><span ng-bind="sort"></span></td>
+                  <td><button ng-click="sortName()">Sort</button></td>
+                  <td><button ng-click="sortTicker()">Sort</button></td>
+                  <td><button ng-click="sortCoins()">Sort</button></td>
+                  <td><button ng-click="sortCap()">Sort</button></td>
+               </tr>
+               <tr ng-repeat="x in currencies">
+                 <td>{{ x.id }}</td>
+                 <td>{{ x.name }}</td>
+                 <td>{{ x.ticker }}</td>
+                 <td>{{ x.numberOfCoins }}</td>
+                 <td>{{ x.marketCap }}</td>
+               </tr>
+            </table>
+
+           <form name="currencyForm">
+              <div>
+              <label>
+                 id:
+                <input type="text" name="id" ng-model="user.id">
+              </label>
+              </div>
+              <div>
+              <label>
+                 ticker:
+                <input type="text" name="ticker" ng-model="user.ticker"
+                   ng-minlength="3" ng-maxlength="3">
+              </label>
+              <div role="alert">
+                 <span class="error" ng-show="currencyForm.ticker.$error.minlength">
+                 Too short!</span>
+                 <span class="error" ng-show="currencyForm.ticker.$error.maxlength">
+                 Too long!</span>
+              </div>
+              </div>
+              <div>
+              <label>
+                 name:
+                <input type="text" name="name" ng-model="user.name">
+              </label>
+              </div>
+              <div>
+              <label>
+                 number of coins:
+                <input type="number" name="numberOfCoins" ng-model="user.numberOfCoins">
+              </label>
+              </div>
+              <div>
+              <label>
+                 market cap:
+                <input type="number" name="marketCap" ng-model="user.marketCap">
+              </label>
+              </div>
+              <button ng-click="newCurrency()">New</button>
+              <button ng-click="updateCurrency()">Update</button>
+              <button ng-click="deleteCurrency()">Delete</button>
+              <button ng-click="clearSort()">Clear sort</button>
+            </form>
+        </div>
+
+    </body>
+</html>

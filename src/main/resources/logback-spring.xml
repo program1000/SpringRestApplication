@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+ 
+    <property name="LOGS" value="./logs" />
+
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-5level [%-7thread] %-56logger{36} -	%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="File" class="ch.qos.logback.core.FileAppender">
+		<file>${LOGS}/crypto.log</file>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} %-5level [%-7thread] %-56logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+    
+    <!-- LOG everything at INFO level -->
+    <root level="info">
+        <!-- appender-ref ref="File" / -->
+        <appender-ref ref="Console" />
+    </root>
+ 
+    <!-- LOG "crypto*" at INFO level -->
+    <logger name="crypto" level="debug" additivity="false">
+        <appender-ref ref="File" />
+        <appender-ref ref="Console" />
+    </logger>
+ 
+</configuration>
